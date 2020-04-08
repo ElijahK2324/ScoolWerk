@@ -1,0 +1,42 @@
+package helloworld;
+
+import java.util.ArrayList;
+
+// Main class for Game wheel and Slice 
+public class Main {
+	
+
+	public static void main(String[] args) {
+		//Allows us to use methods from other classes
+		GameWheel getGame = new GameWheel();
+		Slice getSlice = new Slice(getGame.getSlices());
+
+		// adds up the sum of all earned money
+		int totalMoney = 0;
+		
+		// we will check if all values of the array hold the same string value 
+		ArrayList<String> allColors = new ArrayList<String>();
+		
+		
+		// Spins 3 times and each time 
+		for(int i = 0; i < 3; i ++) 
+		{
+			getGame.spinWheel();
+			System.out.println("Spin " + i + " = " + getSlice.toString());
+			totalMoney += getSlice.getPrizeAmount();
+			allColors.add(getSlice.getColor());
+			
+		}
+		
+		
+		System.out.println("Total Money = ");
+		/* Expected Output
+		 * Total prize money: $7000
+		 * 
+			Spin 1 - Color: black, Prize Amount: $4000
+			Spin 2 - Color: blue, Prize Amount: $2400
+			Spin 3 - Color: blue, Prize Amount: $600
+		 */
+	}
+
+}
