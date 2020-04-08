@@ -1,6 +1,16 @@
 package helloworld;
+/*
+Mainly with the scramble method I think im good as in it should work?? but output is wrong and im not sure why
+Just if you could check over and see if it looks like it'll do the trick 
 
+The main point of the scramble class is to randomize the positions of indexes in the List 
+(slices list like how pie is broken up into slices even if you move the slices around they still have hte same flavor they started with)
+e.g 
+shuffle items in a list without changing their value 
 
+to do this i broke the array down into even (blue), odd (red), and numbers that have 10 as a multiple (black) into 3 lists 
+randomized them and remade the list tell me if you need more info
+*/
 
 /* Term 2 Assignment 5 - Game Wheel */
 /* GameWheel class*/
