@@ -1,10 +1,3 @@
-/*
-  Line 17 is the problem as im not sure what to put in for the slides class arguments(c (for color) and p (prizeAmount)
-  I create a new class object[?] for slides here because i need to access the getColor and getPrizeAmount Methods to print the 
-  total cash amount and double it if all slice colors are the same
-*/
-
-
 import java.util.ArrayList;
 
 // Main class for Game wheel and Slice 
@@ -14,36 +7,41 @@ public class Main {
 	public static void main(String[] args) {
 		//Allows us to use methods from other classes
 		GameWheel getGame = new GameWheel();
-		Slice getSlice = new Slice(getGame.getSlices());
 
-		// adds up the sum of all earned money
-		int totalMoney = 0;
-		
-		// we will check if all values of the array hold the same string value 
+		// store values of the slice in variable
+		int totalPrize = 0;
+		int slicePrize = 0;
+		String sliceColor = "";
 		ArrayList<String> allColors = new ArrayList<String>();
 		
-		
-		// Spins 3 times and each time 
+		// Spins 3 times and each time print the spin amount color and value of the slice
 		for(int i = 0; i < 3; i ++) 
 		{
-			getGame.spinWheel();
-			System.out.println("Spin " + i + " = " + getSlice.toString());
-			totalMoney += getSlice.getPrizeAmount();
-			allColors.add(getSlice.getColor());
+			// store the slice in a variable every run 
+			Slice currentSlice = getGame.spinWheel();
 			
+			// store the CURRENT values on the slice for use later 
+			slicePrize += currentSlice.getPrizeAmount();
+			sliceColor = currentSlice.getColor();
+			
+			// store these values for later when choosing to double total amount per same colors 
+			totalPrize += currentSlice.getPrizeAmount();
+			allColors.add(currentSlice.getColor());
+			
+			System.out.println("Spin " + i + " - Color: " + sliceColor + ", Prize Amount: $" + slicePrize);
 		}
 		
 		// check if all colors match 
 		if((allColors.get(0) == allColors.get(1)) && (allColors.get(0) == allColors.get(2)))
 		{
 			// double money if all values are the same Color and PRINT
-			System.out.println("Total Money = " + totalMoney*2);
+			System.out.println("\nTotal Money = " + totalPrize*2);
 			System.out.println("All Slides are the same Color EARN DOUBLE!!");
 		}
 		else 
 		{
 			// print regular money with no additions 
-			System.out.println("Total Money = " + totalMoney);
+			System.out.println("\nTotal Money = " + totalPrize);
 		}
 		
 		/*  Expected Output 1
